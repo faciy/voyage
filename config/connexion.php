@@ -4,7 +4,7 @@
 $hote = 'localhost'; // Adresse au serveur
 $log = 'root'; // Login
 $pass = ''; // Mot de passe
-$base = 'challenge2_db'; // Base de donées à utiliser
+$base = 'devoir2'; // Base de donées à utiliser
 
 // On se connecte à la base de données
 $connect = mysqli_connect($hote, $log, $pass);

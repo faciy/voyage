@@ -1,19 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/css/style.css">
-    <link rel="stylesheet" href="file:///C:/wamp64/www/voyage/Boostrap/font/css/all.css">
-
-    <title>Transport</title>
-  </head>
-  <body>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHALLENGE</title>
+    <link rel="stylesheet" href="dist/css/mystyle.css">
+    <link rel="stylesheet" href="dist/css/bootstrap.css">
+</head>
+<body>
+<img src="VAKA MARCEL.png" alt="VAKA" class="img-responsive monlogo" width="130" height="100">
     <div class="container fond">
 			<div class="main">
 				<h5 class="titre">ENREGISTREMENT D'UN NOUVEAU CLIENT</h5>
@@ -35,7 +30,7 @@
                                     <select name="compagnie" id="" class="form-control" required>
                                         <option selected disabled>Choisir compagnie de transport</option>
                                         <?php while ($doncomphnie=mysqli_fetch_array($mareq)) {?>
-                                            <option value="<?php echo ($doncomphnie['nom']); ?>"><?php echo ($doncomphnie['nom']); ?></option>
+                                            <option value="<?php echo ($doncomphnie['id']); ?>"><?php echo ($doncomphnie['nom']); ?></option>
                                         <?php } ?>
                                     </select>
 							</div>
@@ -48,7 +43,7 @@
 									<select name="ville_depart" id="" class="form-control" required>
                                         <option selected disabled>Choisir la ville de départ</option>
                                         <?php while ($donville=mysqli_fetch_array($mareqville)) {?>
-                                            <option value="<?php echo ($donville['ville']); ?>"><?php echo ($donville['ville']); ?></option>
+                                            <option value="<?php echo ($donville['id_ville']); ?>"><?php echo ($donville['ville']); ?></option>
                                         <?php } ?>
                                     </select>
 								</div>
@@ -61,7 +56,7 @@
                                     <select name="ville_arrivee" id="" class="form-control" required>
                                         <option selected disabled>Choisir la ville d'arrivée</option>
                                         <?php while ($donvillea=mysqli_fetch_array($mareqvillea)) {?>
-                                            <option value="<?php echo ($donvillea['ville']); ?>"><?php echo ($donvillea['ville']); ?></option>
+                                            <option value="<?php echo ($donvillea['id_ville']); ?>"><?php echo ($donvillea['ville']); ?></option>
                                         <?php } ?>
                                     </select>
 								</div>
@@ -92,19 +87,12 @@
                    
     
 				</div><!--main-center"-->
-				<Center>
+				<CEnter>
 				<a href="index.php">ACCUEIL</a> - 
 				<a href="liste.php">LISTE DES CLIENTS</a>
-        	</Center>
+        	</CEnter>
 			</div><!--main-->
 			
         </div><!--container-->
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/script.js"></script>
-    <script src="js/jquery-3.4.1.min.js" ></script>
-    <script src="js/popper.min.js" ></script>
-    <script src="js/bootstrap.min.js""></script>
-  </body>
+</body>
 </html>

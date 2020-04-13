@@ -1,18 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/css/style.css">
-    <link rel="stylesheet" href="file:///C:/wamp64/www/voyage/Boostrap/font/css/all.css">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LISTE</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/bootstrap.css">
+</head>
+<body>
     <div class="panel panel-default">
     <div class="panel-heading"style="background-color: #0f2f5b; color:#fff">
         <h3 class="panel-title">LISTE DES CLIENTS</h3>
@@ -27,31 +22,45 @@
                 <th>VILLE ARRIVEE</th>
                 <th>DATE / HEURE DEPART</th>
             </tr>
-        <?php while ($vclient=mysqli_fetch_array($reqclient)) { ?>
+        <?php while ($vclient=mysqli_fetch_array($reqclient)) {
+            //script pour afficher le nom de la compagnie dont l'id se trouve dans la table client
+            $compagnyid = $vclient['compagnie'];
+            $compagny = '';
+            $getcompagny = mysqli_query($connect, "SELECT * FROM compagnies WHERE id='$compagnyid'");
+            while ($comp=mysqli_fetch_array($getcompagny)) {
+                $compagny = $comp['nom'];
+            }
+
+            //script pour afficher le nom de la ville de depart dont l'id se trouve dans la table client
+            $villedepid = $vclient['ville_depart'];
+            $getvilledep = mysqli_query($connect, "SELECT * FROM ville WHERE id_ville = '$villedepid'");
+            while ($ville=mysqli_fetch_array($getvilledep)) {
+                $villed=$ville['ville'];
+            }
+
+            //script pour afficher le nom de la ville d'arrivée dont l'id se trouve dans la table client
+            $villearrivid = $vclient['ville_arrivee'];
+            $getvillearr = mysqli_query($connect, "SELECT * FROM ville WHERE id_ville = '$villearrivid'");
+            while ($villear=mysqli_fetch_array($getvillearr)) {
+                $villea=$villear['ville'];
+            }
+             ?>
+             
             <tr>
                 <td><?php echo($vclient['id_client']); ?></td>
                 <td><?php echo($vclient['nom_prenoms']); ?></td>
-                <td><?php echo($vclient['compagnie']); ?></td>
-                <td><?php echo($vclient['ville_depart']); ?></td>
-                <td><?php echo($vclient['ville_arrivee']); ?></td>
+                <td><?php echo( $compagny); ?></td>
+                <td><?php echo($villed); ?></td>
+                <td><?php echo( $villea); ?></td>
                 <td><?php echo($vclient['date_v']." / ". $vclient['heure_v']); ?></td>
             </tr>
             <?php } ?>
         </table>
     </div>
     </div>
-    <Center>
+    <CEnter>
     <a href="index.php">ACCUEIL</a> - 
     <a href="registration.php">NOUVEL ENREGISTREMENT</a>
-    </Center>
+    </CEnter>
 </body>
-   
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/script.js"></script>
-    <script src="js/jquery-3.4.1.min.js" ></script>
-    <script src="js/popper.min.js" ></script>
-    <script src="js/bootstrap.min.js""></script>
-  </body>
 </html>
